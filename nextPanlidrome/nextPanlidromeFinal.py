@@ -11,9 +11,9 @@ def toDigits(n, b=10):
         digits.append(n % b)
         # Integer division in Python 3 (actually >= 2.5)
         n //= b
-        # Actually returns digits in reversed order so index in array corresponds
-        # to base power
-        return digits
+    # Actually returns digits in reversed order so index in array corresponds
+    # to base power
+    return digits
        
 def fromDigits(digits, b=10):
     return sum(b**i * ai for i, ai in enumerate(digits))
@@ -24,10 +24,10 @@ def nextPalindrome(n, b=10):
     nd = len(digits)
     half = nd//2
     A = digits[nd-half:]
-    print A
     B = list(reversed(A))
     C = digits[:half]
     nA, nB, nC = map(lambda x: fromDigits(x, b), (A, B, C))
+    print nA, nB, nC
     if nB > nC:
         # Not >= because if given a palindrome, we want the next one
         digits[:half] = B
@@ -45,9 +45,15 @@ def nextPalindrome(n, b=10):
         digits[:half] = B
     return fromDigits(digits, b)
 
-T = int(raw_input())
-for i in range(T):
-    number = int(raw_input())
-    print nextPalindrome(number) 
+
+def main():
+    T = int(raw_input())
+    for i in range(T):
+        number = int(raw_input())
+        print nextPalindrome(number) 
+
+
+if __name__ == "__main__":
+    main()
 
 
